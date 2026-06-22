@@ -24,17 +24,17 @@ export default defineConfig({
     }
   },
   renderer: {
-    root: resolve(__dirname, 'src/renderer'),
+    root: resolve(__dirname, '.'),
     plugins: [react()],
     resolve: {
       alias: {
-        '@renderer': resolve(__dirname, 'src/renderer')
+        '@': resolve(__dirname, 'src')
       }
     },
     build: {
       rollupOptions: {
         input: {
-          index: resolve(__dirname, 'src/renderer/index.html')
+          index: resolve(__dirname, 'index.html')
         }
       }
     }

@@ -1,12 +1,12 @@
 import React from 'react'
-import { useFileManager } from '../files/fileManager'
-import { useEditorState } from '../editor/editorState'
+import { useActiveFileStore } from '../files/activeFile.store'
+import { useEditorStore } from '../editor/editor.store'
 
 export const StatusBar: React.FC = () => {
-  const { fileState } = useFileManager()
-  const { cursorLine, cursorCol, languageMode } = useEditorState()
+  const { filePath } = useActiveFileStore()
+  const { cursorLine, cursorCol, languageMode } = useEditorStore()
 
-  const displayPath = fileState.filePath ? fileState.filePath : 'No File'
+  const fileName = filePath ? filePath.split(/[/\\]/).pop() : 'No File'
 
   return (
     <div className="status-bar">
@@ -17,7 +17,9 @@ export const StatusBar: React.FC = () => {
             <polyline points="14 2 14 8 20 8" />
           </svg>
         </span>
-        <span className="status-path" title={displayPath}>{displayPath}</span>
+        <span className="status-path" title={filePath || 'No File Opened'}>
+          {fileName}
+        </span>
       </div>
       <div className="status-right">
         <div className="status-elem">

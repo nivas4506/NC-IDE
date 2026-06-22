@@ -1,8 +1,9 @@
 import { ipcMain, dialog, BrowserWindow } from 'electron'
 import * as fs from 'fs/promises'
+import { IPC_CHANNELS } from '../../shared/ipcChannels'
 
 export function registerFileHandlers() {
-  ipcMain.handle('file:open', async (event) => {
+  ipcMain.handle(IPC_CHANNELS.FILE_OPEN, async (event) => {
     const window = BrowserWindow.fromWebContents(event.sender)
     if (!window) return null
 
@@ -11,7 +12,7 @@ export function registerFileHandlers() {
       properties: ['openFile'],
       filters: [
         { name: 'All Files', extensions: ['*'] },
-        { name: 'Text Files', extensions: ['txt', 'md', 'js', 'ts', 'tsx', 'html', 'css', 'json', 'yaml', 'yml'] }
+        { name: 'Text Files', extensions: ['txt', 'md', 'js', 'jsx', 'ts', 'tsx', 'html', 'css', 'json', 'py', 'yaml', 'yml'] }
       ]
     })
 
@@ -29,7 +30,7 @@ export function registerFileHandlers() {
     }
   })
 
-  ipcMain.handle('file:save', async (_event, filePath: string, content: string) => {
+  ipcMain.handle(IPC_CHANNELS.FILE_SAVE, async (_event, filePath: string, content: string) => {
     try {
       await fs.writeFile(filePath, content, 'utf-8')
       return true
@@ -39,7 +40,7 @@ export function registerFileHandlers() {
     }
   })
 
-  ipcMain.handle('file:save-as', async (event, content: string) => {
+  ipcMain.handle(IPC_CHANNELS.FILE_SAVE_AS, async (event, content: string) => {
     const window = BrowserWindow.fromWebContents(event.sender)
     if (!window) return null
 
@@ -47,7 +48,7 @@ export function registerFileHandlers() {
       title: 'Save File As',
       filters: [
         { name: 'All Files', extensions: ['*'] },
-        { name: 'Text Files', extensions: ['txt', 'md', 'js', 'ts', 'tsx', 'html', 'css', 'json', 'yaml', 'yml'] }
+        { name: 'Text Files', extensions: ['txt', 'md', 'js', 'jsx', 'ts', 'tsx', 'html', 'css', 'json', 'py', 'yaml', 'yml'] }
       ]
     })
 
@@ -63,5 +64,24 @@ export function registerFileHandlers() {
       console.error(`Failed to save-as file: ${filePath}`, error)
       throw error
     }
+  })
+
+  ipcMain.handle(IPC_CHANNELS.FILE_UNSAVED_DIALOG, async (event) => {
+    const window = BrowserWindow.fromWebContents(event.sender)
+    if (!window) return 'cancel'
+
+    const result = await dialog.showMessageBox(window, {
+      type: 'warning',
+      buttons: ['Save', "Don't Save", 'Cancel'],
+      defaultId: 0,
+      cancelId: 2,
+      title: 'Unsaved Changes',
+      message: 'Do you want to save the changes you made to the file?',
+      detail: "Your changes will be lost if you don't save them."
+    })
+
+    if (result.response === 0) return 'save'
+    if (result.response === 1) return 'dont-save'
+    return 'cancel'
   })
 }

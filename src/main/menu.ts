@@ -1,4 +1,5 @@
 import { Menu, BrowserWindow, app, dialog } from 'electron'
+import { IPC_CHANNELS } from '../shared/ipcChannels'
 
 export function createApplicationMenu() {
   const template: Electron.MenuItemConstructorOptions[] = [
@@ -10,7 +11,7 @@ export function createApplicationMenu() {
           accelerator: 'CmdOrCtrl+N',
           click: () => {
             const win = BrowserWindow.getFocusedWindow()
-            if (win) win.webContents.send('menu:new')
+            if (win) win.webContents.send(IPC_CHANNELS.MENU_NEW)
           }
         },
         {
@@ -18,7 +19,7 @@ export function createApplicationMenu() {
           accelerator: 'CmdOrCtrl+O',
           click: () => {
             const win = BrowserWindow.getFocusedWindow()
-            if (win) win.webContents.send('menu:open')
+            if (win) win.webContents.send(IPC_CHANNELS.MENU_OPEN)
           }
         },
         {
@@ -26,7 +27,7 @@ export function createApplicationMenu() {
           accelerator: 'CmdOrCtrl+S',
           click: () => {
             const win = BrowserWindow.getFocusedWindow()
-            if (win) win.webContents.send('menu:save')
+            if (win) win.webContents.send(IPC_CHANNELS.MENU_SAVE)
           }
         },
         {
@@ -34,14 +35,20 @@ export function createApplicationMenu() {
           accelerator: 'CmdOrCtrl+Shift+S',
           click: () => {
             const win = BrowserWindow.getFocusedWindow()
-            if (win) win.webContents.send('menu:save-as')
+            if (win) win.webContents.send(IPC_CHANNELS.MENU_SAVE_AS)
           }
         },
         { type: 'separator' },
         {
           label: 'Exit',
+          accelerator: 'CmdOrCtrl+Q',
           click: () => {
-            app.quit()
+            const win = BrowserWindow.getFocusedWindow()
+            if (win) {
+              win.close() // goes through the close confirmation guard
+            } else {
+              app.quit()
+            }
           }
         }
       ]
@@ -55,7 +62,6 @@ export function createApplicationMenu() {
         { role: 'cut' },
         { role: 'copy' },
         { role: 'paste' },
-        { type: 'separator' },
         { role: 'selectAll' }
       ]
     },
@@ -63,11 +69,8 @@ export function createApplicationMenu() {
       label: 'View',
       submenu: [
         {
-          label: 'Toggle Status Bar',
-          click: () => {
-            const win = BrowserWindow.getFocusedWindow()
-            if (win) win.webContents.send('menu:toggle-statusbar')
-          }
+          label: 'Toggle Sidebar (Stub)',
+          enabled: false
         },
         { type: 'separator' },
         { role: 'reload' },
@@ -88,11 +91,11 @@ export function createApplicationMenu() {
           label: 'About NC IDE',
           click: (menuItem, browserWindow) => {
             if (browserWindow) {
-              dialog.showMessageBox(browserWindow, {
+              dialog.showMessageBox(browserWindow as BrowserWindow, {
                 type: 'info',
                 title: 'About NC IDE',
                 message: 'NC IDE',
-                detail: 'NC IDE — Week 1 Foundation\n\nA lightweight, developer-first IDE built on Electron, React, and CodeMirror 6.'
+                detail: 'NC IDE — Week 1 Foundation (Monaco)\n\nA lightweight, developer-first IDE built on Electron, React, and Monaco Editor.'
               })
             }
           }

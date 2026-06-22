@@ -23,8 +23,13 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@renderer/*": ["./src/renderer/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["src/renderer/**/*"]
+  "include": [
+    "src/modules/**/*",
+    "src/shared/**/*",
+    "src/App.tsx",
+    "src/renderer-entry.tsx"
+  ]
 }
