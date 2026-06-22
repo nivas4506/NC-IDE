@@ -1,6 +1,6 @@
-# NC IDE — Week 1 Foundation Prototype (v0.1.0)
+# NC IDE — Native C++ Prototype (v0.2.0)
 
-NC IDE is a lightweight, fast, developer-first desktop IDE built on **Electron**, **React**, and **Monaco Editor**, designed with a clean, extensible modular architecture.
+NC IDE is a lightweight, fast, and highly modular desktop Integrated Development Environment built entirely in **C++** and **Qt6**. Following a full rewrite from the original Electron-based prototype, NC IDE now prioritizes native performance, lower memory footprint, and a tightly integrated modular architecture.
 
 ---
 
@@ -8,131 +8,96 @@ NC IDE is a lightweight, fast, developer-first desktop IDE built on **Electron**
 
 | Layer | Technology | Purpose |
 | --- | --- | --- |
-| **Desktop Shell** | Electron | Native OS windows, Dialog overlays, Native menus |
-| **Frontend Framework** | React 18 & TypeScript | Component modularity and type-safe UI views |
-| **Editor Core** | Monaco Editor (`@monaco-editor/react`) | VS Code's editor component, enabling syntax highlighting |
-| **State Management** | Zustand | Lightweight store for active files and editor configuration |
-| **Build System** | Vite & Electron-Vite | Fast hot-module-reloading and multi-process builds |
-| **Styling** | CSS Custom Variables | Custom dark themes and HSL design tokens |
+| **Language** | C++17 | Core application logic and performance |
+| **UI Framework** | Qt6 (Widgets) | Native OS windows, layout management, and UI components |
+| **Build System** | CMake | Cross-platform build configuration |
+| **Compiler** | MinGW GCC (UCRT64) | Compilation on Windows via MSYS2 |
 
 ---
 
 ## 📁 Modular Architecture
 
-The source code conforms strictly to the modular structure outlined below, ensuring separate areas of concern do not bleed across boundaries:
+The source code conforms strictly to a modular architecture where different areas of concern are managed by distinct manager classes orchestrated by a central `MainWindow`.
 
-```
-c:/Users/A/OneDrive/Documents/NC IDE/
-├── index.html                   # Vite entry page
-├── electron.vite.config.ts      # Multi-process bundler configuration
-├── package.json                 # Project dependencies & scripts
-├── tsconfig.json                # TypeScript project setups
+```text
+NC IDE/
+├── CMakeLists.txt               # Main build configuration
+├── build.ps1                    # PowerShell build script wrapper
+├── resources/                   # Assets and JSON theme definitions
 └── src/
-    ├── main/                    # ELECTRON MAIN PROCESS
-    │   ├── main.ts              # App bootstrap & window lifecycle
-    │   ├── menu.ts              # Native application menu & accelerators
-    │   └── ipc/
-    │       └── fileHandlers.ts  # Node fs dialogues and unsaved changes confirmation
-    ├── preload/                 # PRELOAD BRIDGE
-    │   └── preload.ts           # Exposes safe IPC channels to the renderer
-    ├── shared/                  # SHARED CONTRACTS
-    │   ├── ipcChannels.ts       # Central channel constants
-    │   └── types.ts             # TypeScript definitions for window.api
-    └── modules/                 # RENDERER MODULES
-        ├── editor/              # EDITOR MODULE
-        │   ├── EditorView.tsx   # Monaco wrapper & change listners
-        │   ├── editor.store.ts  # Cursor pos & editor instance tracking
-        │   └── editor.types.ts  # Interface files
-        ├── files/               # FILE MODULE
-        │   ├── activeFile.store.ts # File content and dirty state store
-        │   └── fileService.ts   # Save, Save As, and Open logic
-        ├── ui/                  # UI VIEW SHELLS
-        │   ├── MenuBar.tsx      # Window TitleBar header
-        │   ├── Toolbar.tsx      # Action icons (New, Open, Save, Undo, Redo)
-        │   ├── StatusBar.tsx    # CursorLn, Col, Language, and Encoding display
-        │   ├── Workspace.tsx    # Overall layout builder
-        │   └── shortcuts.ts     # IPC menu keyboard hooks
-        └── theme/               # DESIGN SYSTEM & THEMES
-            ├── tokens.css       # Global design variables & layouts
-            ├── theme.types.ts   # Configuration types
-            └── monacoTheme.ts   # Monaco custom color mapping
+    ├── main.cpp                 # Application entry point
+    ├── MainWindow.cpp / .h      # Main window UI, menus, dock widgets, and orchestration
+    ├── editor/                  # EDITOR MODULE
+    │   ├── CodeEditor.cpp       # QPlainTextEdit subclass with line numbers/highlighting
+    │   ├── SyntaxHighlighter    # Regex-based syntax highlighting logic
+    │   └── LineNumberArea       # Custom widget for rendering line numbers
+    ├── tabs/                    # TAB MANAGEMENT MODULE
+    │   ├── TabManager.cpp       # Multi-tab logic, dirty state tracking, file I/O
+    │   └── EditorTab.cpp        # Container for an individual CodeEditor and its state
+    ├── search/                  # SEARCH MODULE
+    │   ├── SearchManager.cpp    # In-file Find & Replace logic
+    │   └── ProjectSearchEngine  # Multi-threaded search across directories
+    ├── session/                 # SESSION MODULE
+    │   └── SessionManager.cpp   # Auto-saves and restores open tabs across restarts
+    └── settings/                # CONFIGURATION & THEME MODULE
+        └── SettingsManager.cpp  # Loads themes and persists application settings
 ```
 
 ---
 
-## 🔄 IPC Bridge Protocol
+## ✨ Core Features & Components
 
-All file operations go through secure IPC channels using `ipcMain.handle` / `contextBridge` to avoid exposing Node APIs directly to the Web app.
+### 1. Tab Management (`TabManager`)
+Manages multiple open files simultaneously using `QTabWidget`. 
+* Tracks unsaved changes (`isDirty`), appending a `*` to tab titles.
+* Handles file opening, reading, saving, and "Save As" functionality.
+* Warns users about unsaved changes before closing tabs or the application.
 
-| Channel Name | Flow | Purpose |
-| --- | --- | --- |
-| `file:open` | Renderer ➔ Main | Opens native Open dialog; returns file path and content. |
-| `file:save` | Renderer ➔ Main | Writes content to an existing file path. |
-| `file:save-as` | Renderer ➔ Main | Opens native Save dialog and saves content to a new path. |
-| `file:unsaved-dialog` | Renderer ➔ Main | Opens message box prompting *Save*, *Don't Save*, or *Cancel*. |
-| `menu:new` | Main ➔ Renderer | Triggers creation of a new, untitled buffer. |
-| `menu:open` | Main ➔ Renderer | Triggers file loading. |
-| `menu:save` | Main ➔ Renderer | Triggers active buffer save. |
-| `menu:save-as` | Main ➔ Renderer | Triggers save-as dialog. |
-| `app:close-request` | Main ➔ Renderer | Requests window closure check. |
-| `app:close-confirmed` | Renderer ➔ Main | Notifies main process that it is safe to close. |
+### 2. Code Editor (`CodeEditor` & `SyntaxHighlighter`)
+A custom editor built on top of `QPlainTextEdit`.
+* **Line Numbers:** A dynamic `LineNumberArea` tracks block counts and scrolling to render line numbers.
+* **Current Line Highlighting:** Visually highlights the line the cursor is currently on.
+* **Syntax Highlighting:** Uses `QSyntaxHighlighter` for regex-based, rule-driven code coloring.
 
----
+### 3. Session State (`SessionManager`)
+Ensures the developer never loses their workspace state.
+* Periodically saves the list of currently open files and the active tab index.
+* Automatically restores these tabs when the application is launched again.
 
-## 💾 State Stores
+### 4. Search Infrastructure (`SearchManager` & `ProjectSearchEngine`)
+* **Local Search:** Fast find and replace functionality within the currently active document.
+* **Project Search:** A robust `QThread`-based search engine that recursively scans directories for text patterns without blocking the main UI thread. Results are displayed in a native dockable window (`QDockWidget`).
 
-### 1. File Store (`activeFile.store.ts`)
-Tracks the active document state:
-* `filePath` (`string | null`): Path of the file currently open.
-* `content` (`string`): Unsaved changes in the editor.
-* `savedContent` (`string`): Text matching the document on disk.
-* `isDirty` (`boolean`): Automatically flipped to `true` if `content !== savedContent`. Controls the titlebar `●` status and the Save button active state.
-* `recentFiles` (`string[]`): Tracks recently opened items.
-
-### 2. Editor Store (`editor.store.ts`)
-Tracks configuration and editor status:
-* `cursorLine` / `cursorCol`: Caret indices.
-* `languageMode`: Currently active language syntax mode.
-* `fontSize` / `wordWrap`: View options.
-* `editorInstance`: Holds the Monaco Editor instance pointer, enabling remote actions (such as Undo/Redo click callbacks).
+### 5. Settings and Theming (`SettingsManager`)
+* Implements dynamic JSON-based theming.
+* Parses color hex codes and applies them globally via Qt Style Sheets (`QSS`) and specific palette modifications.
 
 ---
 
-## 🔒 Unsaved Changes Guard Protocol
-
-If a user tries to close the application, open a file, or create a new file while the active file has unsaved changes (`isDirty === true`), a warning dialog displays:
-
-```mermaid
-graph TD
-    A[Trigger Exit / New / Open] --> B{isDirty == true?}
-    B -- No --> C[Execute Action Immediately]
-    B -- Yes --> D[Show Message Dialog]
-    D -- Save --> E[Write File to Disk]
-    E -- Success --> F[Execute Action]
-    E -- Fail/Cancel --> G[Halt Action]
-    D -- Don't Save --> F
-    D -- Cancel --> G
-```
-
----
-
-## 🛠️ How to Build and Run
+## 🛠️ How to Build and Run (Windows)
 
 ### Prerequisites
-* **Node.js**: v20 or higher
-* **npm**: v10 or higher
+* **MSYS2**: Installed with the UCRT64 environment.
+* Required MSYS2 packages: 
+  ```bash
+  pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-qt6
+  ```
 
-### Installation
-```bash
-npm install
+### Building the Project
+You can build the project using the provided PowerShell script which wraps CMake commands:
+```powershell
+.\build.ps1
+```
+Alternatively, using CMake directly:
+```cmd
+mkdir build
+cd build
+cmake -G "MinGW Makefiles" ..
+cmake --build .
 ```
 
-### Run Development Mode
-```bash
-npm run dev
-```
-
-### Build for Production
-```bash
-npm run build
+### Running the Application
+A helper batch script is provided to ensure the necessary Qt DLLs are in the PATH before launching:
+```cmd
+.\build\run.bat
 ```
