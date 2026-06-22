@@ -1,0 +1,22 @@
+{
+  "name": "light",
+  "editor": {
+    "background": "#F5F5F5",
+    "foreground": "#000000",
+    "cursor": "#1313EC",
+    "lineHighlight": "#EAEAEA",
+    "lineNumber": "#808080",
+    "lineNumberActive": "#000000",
+    "selection": "#ADD8E6",
+    "border": "#D3D3D3"
+  },
+  "syntax": {
+    "keyword": { "color": "#0000FF", "bold": true },
+    "type": { "color": "#008080", "italic": true },
+    "string": { "color": "#A31515" },
+    "comment": { "color": "#008000", "italic": true },
+    "function": { "color": "#795E26" },
+    "number": { "color": "#098658" },
+    "preprocessor": { "color": "#A31515" }
+  }
+}
