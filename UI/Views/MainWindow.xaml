@@ -1,0 +1,596 @@
+<Window x:Class="NcIdeNative.UI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:vm="clr-namespace:NcIdeNative.UI.ViewModels"
+        xmlns:models="clr-namespace:NcIdeNative.Models"
+        xmlns:conv="clr-namespace:NcIdeNative.UI.Converters"
+        Title="NC IDE" Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="{DynamicResource ActivityBarBackground}">
+
+    <Window.Resources>
+        <conv:EnumToVisibilityConverter x:Key="EnumToVis" />
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        
+        <!-- Flat Button Style (Activity Bar Icons) -->
+        <Style TargetType="Button" x:Key="ActivityBarButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource MutedText}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Transparent"/>
+                            </Border.BorderBrush>
+                            <Border.BorderThickness>
+                                <Thickness Left="2" Top="0" Right="0" Bottom="0"/>
+                            </Border.BorderThickness>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource AccentColor}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="FlatIconButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryText}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource BorderColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Window Control Button -->
+        <Style TargetType="Button" x:Key="WindowControlButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryText}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" Width="45" Height="30">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource BorderColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="Button" x:Key="WindowCloseButton" BasedOn="{StaticResource WindowControlButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" Width="45" Height="30">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#E81123"/>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ScrollViewer Style -->
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Grid>
+                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}"/>
+                            <ScrollBar x:Name="PART_VerticalScrollBar" HorizontalAlignment="Right" Minimum="0" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Value="{TemplateBinding VerticalOffset}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Width="10" Background="Transparent" Foreground="#424242"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border BorderBrush="{DynamicResource BorderColor}" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="22" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Bar -->
+            <Grid Grid.Row="0" Background="{DynamicResource ActivityBarBackground}" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
+                    <TextBlock Text="NC" Foreground="{DynamicResource AccentColor}" FontFamily="Segoe UI" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <!-- Menus -->
+                    <Menu Background="Transparent" Foreground="{DynamicResource SecondaryText}" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="13">
+                        <MenuItem Header="File">
+                            <MenuItem Header="New File" Command="{Binding NewFileCommand}" InputGestureText="Ctrl+N" />
+                            <MenuItem Header="Open File..." Command="{Binding OpenFileCommand}" InputGestureText="Ctrl+O" />
+                            <MenuItem Header="Open Folder..." Command="{Binding OpenFolderCommand}" InputGestureText="Ctrl+K Ctrl+O" />
+                            <Separator />
+                            <MenuItem Header="Save" Command="{Binding SaveFileCommand}" InputGestureText="Ctrl+S" />
+                            <Separator />
+                            <MenuItem Header="Close Editor" Command="{Binding CloseCurrentTabCommand}" InputGestureText="Ctrl+F4" />
+                            <Separator />
+                            <MenuItem Header="Settings" Command="{Binding OpenSettingsCommand}" InputGestureText="Ctrl+," />
+                            <Separator />
+                            <MenuItem Header="Exit" Command="{Binding ExitCommand}" InputGestureText="Alt+F4" />
+                        </MenuItem>
+                        <MenuItem Header="Edit">
+                            <MenuItem Header="Undo" Command="ApplicationCommands.Undo" />
+                            <MenuItem Header="Redo" Command="ApplicationCommands.Redo" />
+                            <Separator />
+                            <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                            <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+                            <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+                            <Separator />
+                            <MenuItem Header="Find" Command="ApplicationCommands.Find" />
+                        </MenuItem>
+                        <MenuItem Header="Selection">
+                            <MenuItem Header="Select All" Command="ApplicationCommands.SelectAll" />
+                        </MenuItem>
+                        <MenuItem Header="View">
+                            <MenuItem Header="Explorer" Command="{Binding SetSidebarViewCommand}" CommandParameter="Explorer" InputGestureText="Ctrl+Shift+E" />
+                            <MenuItem Header="Search" Command="{Binding SetSidebarViewCommand}" CommandParameter="Search" InputGestureText="Ctrl+Shift+F" />
+                            <MenuItem Header="Source Control" Command="{Binding SetSidebarViewCommand}" CommandParameter="SourceControl" InputGestureText="Ctrl+Shift+G" />
+                            <MenuItem Header="Run and Debug" Command="{Binding SetSidebarViewCommand}" CommandParameter="Debug" InputGestureText="Ctrl+Shift+D" />
+                            <Separator />
+                            <MenuItem Header="Extensions" Command="{Binding ToggleExtensionsPanelCommand}" InputGestureText="Ctrl+Shift+X" />
+                            <MenuItem Header="AI Assistant" Command="{Binding ToggleAiPanelCommand}" InputGestureText="Ctrl+Shift+I" />
+                            <Separator />
+                            <MenuItem Header="Terminal" Command="{Binding ToggleTerminalCommand}" InputGestureText="Ctrl+`" />
+                            <Separator />
+                            <MenuItem Header="Toggle Theme" Command="{Binding ToggleThemeCommand}" />
+                        </MenuItem>
+                        <MenuItem Header="Go">
+                            <MenuItem Header="Go to Definition" InputGestureText="F12" />
+                            <MenuItem Header="Go to Line/Column..." InputGestureText="Ctrl+G" />
+                        </MenuItem>
+                        <MenuItem Header="Run">
+                            <MenuItem Header="Run Project" Command="{Binding RunProjectCommand}" InputGestureText="F5" />
+                        </MenuItem>
+                        <MenuItem Header="Terminal">
+                            <MenuItem Header="New Terminal" Command="{Binding ToggleTerminalCommand}" InputGestureText="Ctrl+Shift+`" />
+                        </MenuItem>
+                        <MenuItem Header="Help">
+                            <MenuItem Header="About NC IDE" />
+                        </MenuItem>
+                    </Menu>
+                </StackPanel>
+
+                <!-- Centered Title -->
+                <TextBlock Grid.Column="1" Text="NC IDE" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <!-- Window Controls -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button Style="{StaticResource WindowControlButton}" Content="—" FontSize="10" Click="MinimizeButton_Click"/>
+                    <Button Style="{StaticResource WindowControlButton}" Content="☐" FontSize="12" Click="MaximizeButton_Click"/>
+                    <Button Style="{StaticResource WindowCloseButton}" Content="✕" FontSize="12" Click="CloseButton_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Main Layout -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <!-- Activity Bar -->
+                    <ColumnDefinition Width="48" />
+                    <!-- Explorer Sidebar -->
+                    <ColumnDefinition Width="250" />
+                    <!-- Splitter -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Editor Area -->
+                    <ColumnDefinition Width="*" />
+                    <!-- Splitter -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Right Sidebar -->
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Activity Bar -->
+                <Grid Grid.Column="0" Background="{DynamicResource ActivityBarBackground}">
+                    <StackPanel VerticalAlignment="Top">
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding SetSidebarViewCommand}" CommandParameter="Explorer" Content="📄" FontSize="20" ToolTip="Explorer"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding SetSidebarViewCommand}" CommandParameter="Search" Content="🔍" FontSize="20" ToolTip="Search"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding SetSidebarViewCommand}" CommandParameter="SourceControl" Content="ᚠ" FontSize="20" ToolTip="Source Control"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding SetSidebarViewCommand}" CommandParameter="Debug" Content="🐞" FontSize="20" ToolTip="Run and Debug"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding ToggleExtensionsPanelCommand}" Content="🧩" FontSize="20" ToolTip="Extensions"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Command="{Binding ToggleAiPanelCommand}" Content="✨" FontSize="20" ToolTip="Gemini AI"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,10">
+                        <Button Style="{StaticResource ActivityBarButton}" Content="🌗" FontSize="20" ToolTip="Toggle Theme" Command="{Binding ToggleThemeCommand}"/>
+                        <Button Style="{StaticResource ActivityBarButton}" Content="⚙" FontSize="20" ToolTip="Settings" Command="{Binding OpenSettingsCommand}"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Sidebar Area -->
+                <Grid Grid.Column="1" Background="{DynamicResource SidebarBackground}">
+                    <!-- EXPLORER PANEL -->
+                    <Grid Visibility="{Binding ActiveSidebarView, Converter={StaticResource EnumToVis}, ConverterParameter=Explorer}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="EXPLORER" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                            <Button Style="{StaticResource FlatIconButton}" Content="📁" Command="{Binding OpenFolderCommand}" ToolTip="Open Folder"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="..."/>
+                        </StackPanel>
+                        
+                        <TreeView Grid.Row="1" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="13" ItemsSource="{Binding WorkspaceFiles}">
+                            <TreeView.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#37373D" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="{DynamicResource PrimaryText}" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#37373D" />
+                                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="{DynamicResource PrimaryText}" />
+                                
+                                <HierarchicalDataTemplate DataType="{x:Type models:FileTreeNode}" ItemsSource="{Binding Children}">
+                                    <StackPanel Orientation="Horizontal" Margin="0,2,0,2" Background="Transparent" Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType=TreeView}}">
+                                        <StackPanel.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="New File" Command="{Binding PlacementTarget.Tag.AddNewFileCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}" CommandParameter="{Binding}" />
+                                                <MenuItem Header="New Folder" Command="{Binding PlacementTarget.Tag.AddNewFolderCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}" CommandParameter="{Binding}" />
+                                                <MenuItem Header="Delete" Command="{Binding PlacementTarget.Tag.DeleteFileCommand, RelativeSource={RelativeSource AncestorType=ContextMenu}}" CommandParameter="{Binding}" />
+                                            </ContextMenu>
+                                        </StackPanel.ContextMenu>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </HierarchicalDataTemplate>
+                            </TreeView.Resources>
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="TreeViewItem">
+                                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                                    <EventSetter Event="MouseDoubleClick" Handler="TreeViewItem_MouseDoubleClick"/>
+                                </Style>
+                            </TreeView.ItemContainerStyle>
+                        </TreeView>
+                    </Grid>
+
+                    <!-- SEARCH PANEL -->
+                    <Grid Visibility="{Binding ActiveSidebarView, Converter={StaticResource EnumToVis}, ConverterParameter=Search}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="SEARCH" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        
+                        <TextBox Grid.Row="1" Margin="10,5,10,5" Padding="5" Background="#2D2D2D" Foreground="{DynamicResource PrimaryText}" BorderThickness="1" BorderBrush="#3C3C3C"
+                                 Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding ExecuteSearchCommand}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        
+                        <ListBox Grid.Row="2" Background="Transparent" BorderThickness="0" ItemsSource="{Binding SearchResults}" MouseDoubleClick="SearchResults_MouseDoubleClick">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="{Binding FileName}" Foreground="{DynamicResource PrimaryText}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding MatchLine}" Foreground="{DynamicResource SecondaryText}" TextTrimming="CharacterEllipsis"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <!-- SOURCE CONTROL PANEL -->
+                    <Grid Visibility="{Binding ActiveSidebarView, Converter={StaticResource EnumToVis}, ConverterParameter=SourceControl}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="SOURCE CONTROL" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                            <Button Style="{StaticResource FlatIconButton}" Content="🔄" Command="{Binding RefreshGitCommand}" ToolTip="Refresh"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="..."/>
+                        </StackPanel>
+                        
+                        <TextBox Grid.Row="1" Margin="10,5,10,5" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Background="#2D2D2D" Foreground="{DynamicResource PrimaryText}" BorderThickness="1" BorderBrush="#3C3C3C" Text="{Binding CommitMessage, UpdateSourceTrigger=PropertyChanged}" />
+                        
+                        <Button Grid.Row="2" Margin="10,0,10,5" Content="Commit" Background="#007ACC" Foreground="White" BorderThickness="0" Height="25" Command="{Binding CommitGitCommand}"/>
+                        
+                        <ListBox Grid.Row="3" Background="Transparent" BorderThickness="0" ItemsSource="{Binding GitChanges}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <TextBlock Text="{Binding Status}" Foreground="#E5C07B" Width="20" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding FilePath}" Foreground="{DynamicResource PrimaryText}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <!-- DEBUG PANEL -->
+                    <Grid Visibility="{Binding ActiveSidebarView, Converter={StaticResource EnumToVis}, ConverterParameter=Debug}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="RUN AND DEBUG" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        
+                        <TextBlock Grid.Row="1" Text="Run Command:" Foreground="{DynamicResource SecondaryText}" Margin="10,10,10,0"/>
+                        <TextBox Grid.Row="2" Margin="10,5,10,5" Padding="5" Background="#2D2D2D" Foreground="{DynamicResource PrimaryText}" BorderThickness="1" BorderBrush="#3C3C3C" Text="{Binding RunConfiguration, UpdateSourceTrigger=PropertyChanged}"/>
+                        
+                        <Button Grid.Row="3" Margin="10,10,10,0" VerticalAlignment="Top" Content="▶ Run" Background="#007ACC" Foreground="White" BorderThickness="0" Height="30" Command="{Binding RunProjectCommand}"/>
+                    </Grid>
+                </Grid>
+
+                <GridSplitter Grid.Column="2" Width="1" HorizontalAlignment="Center" Background="{DynamicResource BorderColor}" Margin="0"/>
+
+                <!-- Editor & Terminal Area -->
+                <Grid Grid.Column="3" Background="{DynamicResource EditorBackground}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Editor Tabs -->
+                    <TabControl Grid.Row="0" Background="{DynamicResource EditorBackground}" BorderThickness="0" ItemsSource="{Binding OpenTabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}">
+                        <TabControl.ItemContainerStyle>
+                            <Style TargetType="TabItem">
+                                <Setter Property="Background" Value="{DynamicResource TabHeaderBackground}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource SecondaryText}"/>
+                                <Setter Property="BorderThickness" Value="0,0,1,0"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource ActivityBarBackground}"/>
+                                <Setter Property="Padding" Value="10,0"/>
+                                <Setter Property="Height" Value="35"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TabItem">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                                                    <TextBlock Margin="0,0,10,0">
+                                                        <TextBlock.Style>
+                                                            <Style TargetType="TextBlock">
+                                                                <Setter Property="Text" Value="{Binding FileName}"/>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsModified}" Value="True">
+                                                                        <Setter Property="Text" Value="{Binding FileName, StringFormat='{}{0}*'}"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                    <Button Content="x" Background="Transparent" BorderThickness="0" Foreground="{DynamicResource SecondaryText}" Width="16" Height="16" Command="{Binding DataContext.CloseTabCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource EditorBackground}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TabControl.ItemContainerStyle>
+                        <TabControl.ContentTemplate>
+                            <DataTemplate>
+                                <!-- Empty, we handle AvalonEdit in code-behind because it doesn't support bindings well -->
+                            </DataTemplate>
+                        </TabControl.ContentTemplate>
+                    </TabControl>
+
+                    <!-- Breadcrumbs & Text Editor Area -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Background="{DynamicResource EditorBackground}" Height="22" VerticalAlignment="Top">
+                            <TextBlock Text="{Binding SelectedTab.FileName, StringFormat='NC IDE > src > {0}'}" Foreground="#969696" FontFamily="Segoe UI" FontSize="12" Margin="15,3"/>
+                        </Border>
+                        <avalonEdit:TextEditor Grid.Row="1" x:Name="textEditor"
+                                             Margin="15,5,0,0"
+                                             SyntaxHighlighting="C++"
+                                             FontFamily="Consolas"
+                                             FontSize="14"
+                                             ShowLineNumbers="True"
+                                             Background="Transparent"
+                                             Foreground="#D4D4D4"
+                                             LineNumbersForeground="{DynamicResource MutedText}"
+                                             BorderThickness="0">
+                        </avalonEdit:TextEditor>
+                    </Grid>
+
+                    <!-- Terminal Splitter -->
+                    <GridSplitter Grid.Row="1" Height="1" HorizontalAlignment="Stretch" Background="{DynamicResource BorderColor}" Visibility="{Binding IsTerminalVisible, Converter={StaticResource BoolToVis}}"/>
+
+                    <!-- Terminal / Bottom Panel -->
+                    <Grid Grid.Row="3" Height="200" Background="{DynamicResource EditorBackground}" Visibility="{Binding IsTerminalVisible, Converter={StaticResource BoolToVis}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Panel Tabs -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="15,0">
+                            <Button Style="{StaticResource FlatIconButton}" Content="PROBLEMS" Foreground="{DynamicResource SecondaryText}" FontSize="11" Margin="0,0,10,0"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="OUTPUT" Foreground="{DynamicResource SecondaryText}" FontSize="11" Margin="0,0,10,0"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="DEBUG CONSOLE" Foreground="{DynamicResource SecondaryText}" FontSize="11" Margin="0,0,10,0"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="TERMINAL" Foreground="{DynamicResource PrimaryText}" BorderBrush="{DynamicResource AccentColor}" BorderThickness="0,0,0,1" FontSize="11" Margin="0,0,10,0"/>
+                            <Button Style="{StaticResource FlatIconButton}" Content="PORTS" Foreground="{DynamicResource SecondaryText}" FontSize="11"/>
+                        </StackPanel>
+
+                        <!-- Terminal Output -->
+                        <ScrollViewer Grid.Row="1" Margin="15,5" x:Name="TerminalScrollViewer">
+                            <TextBlock Text="{Binding TerminalOutput}" FontFamily="Consolas" FontSize="13" Foreground="{DynamicResource SecondaryText}" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+
+                        <!-- Terminal Input -->
+                        <Grid Grid.Row="2" Margin="15,0,15,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="PS C:\Users\A\OneDrive\Documents\NC IDE> " FontFamily="Consolas" FontSize="13" Foreground="{DynamicResource SecondaryText}" VerticalAlignment="Center"/>
+                            <TextBox Grid.Column="1" Text="{Binding TerminalInput, UpdateSourceTrigger=PropertyChanged}" 
+                                     Background="Transparent" Foreground="{DynamicResource SecondaryText}" BorderThickness="0" FontFamily="Consolas" FontSize="13" CaretBrush="{DynamicResource SecondaryText}" VerticalAlignment="Center">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding SendTerminalCommand}"/>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <GridSplitter Grid.Column="4" Width="1" HorizontalAlignment="Center" Background="{DynamicResource BorderColor}" Margin="0"/>
+
+                <!-- Right Sidebar (Extensions / AI Chat) -->
+                <Grid Grid.Column="5" Width="300" Background="{DynamicResource SidebarBackground}">
+                    <Grid.Style>
+                        <Style TargetType="Grid">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsAiPanelVisible}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsExtensionsPanelVisible}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <!-- Extensions View -->
+                    <Grid Visibility="{Binding IsExtensionsPanelVisible, Converter={StaticResource BoolToVis}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="EXTENSIONS" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        
+                        <ScrollViewer Grid.Row="1" Margin="0">
+                            <ItemsControl ItemsSource="{Binding Extensions}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderColor}" Padding="15,10">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                                    <TextBlock Text="🧩" Margin="0,0,10,0"/>
+                                                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryText}" FontSize="13" Margin="0,0,10,0"/>
+                                                    <TextBlock Text="{Binding Version}" FontSize="11" Foreground="{DynamicResource MutedText}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Foreground="{DynamicResource MutedText}" FontSize="12" Margin="25,0,0,0"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!-- AI Chat View -->
+                    <Grid Visibility="{Binding IsAiPanelVisible, Converter={StaticResource BoolToVis}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Text="GEMINI 3.1 PRO (HIGH)" Foreground="{DynamicResource SecondaryText}" FontFamily="Segoe UI" FontSize="11" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        
+                        <!-- Chat Messages -->
+                        <ScrollViewer Grid.Row="1" Margin="15,10">
+                            <ItemsControl ItemsSource="{Binding ChatMessages}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0,0,0,15">
+                                            <TextBlock Text="{Binding Sender}" FontWeight="SemiBold" Foreground="{DynamicResource AccentColor}" FontSize="12" Margin="0,0,0,5"/>
+                                            <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Foreground="{DynamicResource SecondaryText}" FontSize="13" FontFamily="Segoe UI"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        
+                        <!-- Input -->
+                        <Border Grid.Row="2" Background="{DynamicResource EditorBackground}" BorderBrush="{DynamicResource BorderColor}" BorderThickness="1" CornerRadius="4" Margin="15,10,15,15" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding ChatInputText, UpdateSourceTrigger=PropertyChanged}" 
+                                         Background="Transparent" Foreground="{DynamicResource SecondaryText}" BorderThickness="0" 
+                                         VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="13" TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="100">
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Key="Enter" Command="{Binding SendAiMessageCommand}"/>
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                                <Button Grid.Column="1" Style="{StaticResource FlatIconButton}" Command="{Binding SendAiMessageCommand}" Content="➤" Foreground="{DynamicResource AccentColor}"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Status Bar -->
+            <Grid Grid.Row="2" Background="{DynamicResource AccentColor}">
+                <StackPanel Orientation="Horizontal" Margin="10,0">
+                    <TextBlock Text="ᚠ main*" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock Text="✕ 0  ⚠ 0" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock Text="NC IDE" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <TextBlock Text="Ln 4, Col 1" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock Text="Spaces: 4" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock Text="UTF-8" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center" Margin="0,0,15,0"/>
+                    <TextBlock Text="C++" Foreground="{DynamicResource PrimaryText}" FontFamily="Segoe UI" FontSize="12" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

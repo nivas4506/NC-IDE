@@ -1,16 +1,38 @@
-node_modules/
-out/
-dist/
-.vite/
-*.log
+# .NET Core
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vsix
+*.testsettings
+
+# Mac
 .DS_Store
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+
+# ReSharper / Rider
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# Build output
+build/
+*.exe
+*.dll
+*.o
+*.obj
+*.pdb
+*.cache
+out.txt
+err.txt
+
+# Copilot
+.copilot/

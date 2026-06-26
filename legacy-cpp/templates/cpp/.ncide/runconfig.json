@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Run main.cpp",
+      "language": "cpp",
+      "buildCommand": "g++ -std=c++17 -g -Wall \"${file}\" -o \"${fileDirname}/${fileBasenameNoExtension}\"",
+      "runCommand": "\"${fileDirname}/${fileBasenameNoExtension}\"",
+      "workingDirectory": "${workspaceFolder}",
+      "env": {}
+    }
+  ],
+  "activeConfiguration": "Run main.cpp"
+}

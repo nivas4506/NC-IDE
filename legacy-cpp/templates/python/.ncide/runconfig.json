@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Run main.py",
+      "language": "python",
+      "buildCommand": "",
+      "runCommand": "python \"${file}\"",
+      "workingDirectory": "${workspaceFolder}",
+      "env": {}
+    }
+  ],
+  "activeConfiguration": "Run main.py"
+}

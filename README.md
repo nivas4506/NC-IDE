@@ -1,103 +1,77 @@
-# NC IDE — Native C++ Prototype (v0.2.0)
-
-NC IDE is a lightweight, fast, and highly modular desktop Integrated Development Environment built entirely in **C++** and **Qt6**. Following a full rewrite from the original Electron-based prototype, NC IDE now prioritizes native performance, lower memory footprint, and a tightly integrated modular architecture.
-
----
-
-## 🚀 Tech Stack
-
-| Layer | Technology | Purpose |
-| --- | --- | --- |
-| **Language** | C++17 | Core application logic and performance |
-| **UI Framework** | Qt6 (Widgets) | Native OS windows, layout management, and UI components |
-| **Build System** | CMake | Cross-platform build configuration |
-| **Compiler** | MinGW GCC (UCRT64) | Compilation on Windows via MSYS2 |
+<div align="center">
+  <h1>🚀 NC IDE</h1>
+  <p><b>A modern, lightning-fast native code editor inspired by VS Code, built with WPF and C#.</b></p>
+  <p>
+    <a href="#about">About</a> •
+    <a href="#tech-stack">Tech Stack</a> •
+    <a href="#features--what-is-done">What's Done</a> •
+    <a href="#roadmap--what-needs-to-be-done">Roadmap</a> •
+    <a href="#contributing">Contributing</a>
+  </p>
+</div>
 
 ---
 
-## 📁 Modular Architecture
+## About
 
-The source code conforms strictly to a modular architecture where different areas of concern are managed by distinct manager classes orchestrated by a central `MainWindow`.
+**NC IDE** is an open-source, extensible, and high-performance Integrated Development Environment (IDE). Originally conceived as a C++ Qt6 application, it has been completely re-architected into a robust **C# WPF application** utilizing the MVVM pattern.
 
-```text
-NC IDE/
-├── CMakeLists.txt               # Main build configuration
-├── build.ps1                    # PowerShell build script wrapper
-├── resources/                   # Assets and JSON theme definitions
-└── src/
-    ├── main.cpp                 # Application entry point
-    ├── MainWindow.cpp / .h      # Main window UI, menus, dock widgets, and orchestration
-    ├── editor/                  # EDITOR MODULE
-    │   ├── CodeEditor.cpp       # QPlainTextEdit subclass with line numbers/highlighting
-    │   ├── SyntaxHighlighter    # Regex-based syntax highlighting logic
-    │   └── LineNumberArea       # Custom widget for rendering line numbers
-    ├── tabs/                    # TAB MANAGEMENT MODULE
-    │   ├── TabManager.cpp       # Multi-tab logic, dirty state tracking, file I/O
-    │   └── EditorTab.cpp        # Container for an individual CodeEditor and its state
-    ├── search/                  # SEARCH MODULE
-    │   ├── SearchManager.cpp    # In-file Find & Replace logic
-    │   └── ProjectSearchEngine  # Multi-threaded search across directories
-    ├── session/                 # SESSION MODULE
-    │   └── SessionManager.cpp   # Auto-saves and restores open tabs across restarts
-    └── settings/                # CONFIGURATION & THEME MODULE
-        └── SettingsManager.cpp  # Loads themes and persists application settings
-```
+Our goal is to build a native editor that feels as powerful and familiar as VS Code, but leverages the rich ecosystem and native performance of the .NET Desktop framework.
 
----
+## Tech Stack
 
-## ✨ Core Features & Components
+- **Core Framework:** C# / .NET (WPF)
+- **Editor Surface:** [AvalonEdit](http://avalonedit.net/) (for high-performance text editing and syntax highlighting)
+- **Architecture Pattern:** MVVM (Model-View-ViewModel)
+- **Language Intelligence:** Language Server Protocol (LSP) Integration
 
-### 1. Tab Management (`TabManager`)
-Manages multiple open files simultaneously using `QTabWidget`. 
-* Tracks unsaved changes (`isDirty`), appending a `*` to tab titles.
-* Handles file opening, reading, saving, and "Save As" functionality.
-* Warns users about unsaved changes before closing tabs or the application.
+## Features & What is Done
 
-### 2. Code Editor (`CodeEditor` & `SyntaxHighlighter`)
-A custom editor built on top of `QPlainTextEdit`.
-* **Line Numbers:** A dynamic `LineNumberArea` tracks block counts and scrolling to render line numbers.
-* **Current Line Highlighting:** Visually highlights the line the cursor is currently on.
-* **Syntax Highlighting:** Uses `QSyntaxHighlighter` for regex-based, rule-driven code coloring.
+We have successfully migrated to the new WPF architecture and laid a solid foundation for the IDE shell:
 
-### 3. Session State (`SessionManager`)
-Ensures the developer never loses their workspace state.
-* Periodically saves the list of currently open files and the active tab index.
-* Automatically restores these tabs when the application is launched again.
+- **VS Code Inspired Layout:** Fully implemented Activity Bar, Sidebar, Editor Area, and Bottom Panel.
+- **Workspace Explorer:** Lazy-loaded, high-performance file tree that instantly handles massive projects (like `node_modules`).
+- **Editor Tabs:** Multi-tab support with dirty-state tracking (`*` unsaved indicators) and AvalonEdit two-way bindings.
+- **Syntax Highlighting:** Dynamic language highlighting based on file extensions.
+- **File System Operations:** Explorer context menus for creating files, creating folders, and safely deleting items.
+- **LSP Foundation:** Foundational hooks for Language Server Protocol to support autocomplete, hover tooltips, and real-time diagnostics.
 
-### 4. Search Infrastructure (`SearchManager` & `ProjectSearchEngine`)
-* **Local Search:** Fast find and replace functionality within the currently active document.
-* **Project Search:** A robust `QThread`-based search engine that recursively scans directories for text patterns without blocking the main UI thread. Results are displayed in a native dockable window (`QDockWidget`).
+## Roadmap & What Needs to be Done
 
-### 5. Settings and Theming (`SettingsManager`)
-* Implements dynamic JSON-based theming.
-* Parses color hex codes and applies them globally via Qt Style Sheets (`QSS`) and specific palette modifications.
+NC IDE is growing fast, and there's plenty of exciting work ahead! Here are the immediate priorities:
 
----
+- [ ] **Live Terminal Integration:** Connect the existing Terminal UI panel to a real background `Process` (e.g., PowerShell/CMD) with bi-directional standard input/output.
+- [ ] **Command Palette:** Implement a `Ctrl+Shift+P` modal overlay with a fuzzy-searchable `CommandRegistry`.
+- [ ] **Source Control (Git) Backend:** Wire up the `GitManager` to execute real `git status` and `git commit` commands, populating the Source Control sidebar.
+- [ ] **Search Engine:** Implement a multi-threaded regex search across the workspace to power the Search sidebar view.
+- [ ] **Run & Debug Engine:** Parse `.ncide/runconfig.json` files and build the process spawner for the "Run Project" button.
+- [ ] **AI Assistant Integration:** Connect the mock Gemini UI panel to a real AI API backend.
 
-## 🛠️ How to Build and Run (Windows)
+## Contributing
 
-### Prerequisites
-* **MSYS2**: Installed with the UCRT64 environment.
-* Required MSYS2 packages: 
+**NC IDE is open source and we would love your help!** Whether you're fixing bugs, adding new features, or improving documentation, your contributions are welcome.
+
+### How to Contribute
+
+1. **Fork the repository**
+2. **Clone your fork:** `git clone https://github.com/your-username/nc-ide.git`
+3. **Open the project** in Visual Studio or JetBrains Rider (`NcIdeNative.csproj`).
+4. **Create a new branch:** `git checkout -b feature/your-feature-name`
+5. **Make your changes** and commit them: `git commit -m "Add some feature"`
+6. **Push to the branch:** `git push origin feature/your-feature-name`
+7. **Submit a Pull Request** to the `main` branch!
+
+### Development Setup
+
+- Ensure you have the **.NET 8+ SDK** (or .NET 10) installed.
+- Restore packages and run the application via Visual Studio or via CLI:
   ```bash
-  pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-qt6
+  dotnet restore
+  dotnet run --project "NC IDE"
   ```
 
-### Building the Project
-You can build the project using the provided PowerShell script which wraps CMake commands:
-```powershell
-.\build.ps1
-```
-Alternatively, using CMake directly:
-```cmd
-mkdir build
-cd build
-cmake -G "MinGW Makefiles" ..
-cmake --build .
-```
+---
 
-### Running the Application
-A helper batch script is provided to ensure the necessary Qt DLLs are in the PATH before launching:
-```cmd
-.\build\run.bat
-```
+<div align="center">
+  <i>Built with ❤️ by the open-source community.</i>
+</div>

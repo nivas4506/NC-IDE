@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Run index.js",
+      "language": "javascript",
+      "buildCommand": "",
+      "runCommand": "node \"${file}\"",
+      "workingDirectory": "${workspaceFolder}",
+      "env": {}
+    }
+  ],
+  "activeConfiguration": "Run index.js"
+}

@@ -1,0 +1,308 @@
+[
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\NC-IDE_autogen\\mocs_compilation.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\build\\NC-IDE_autogen\\mocs_compilation.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/build/NC-IDE_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/NC-IDE_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\ai\\AiAssistant.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\ai\\AiAssistant.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/ai/AiAssistant.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/ai/AiAssistant.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\ai\\AiPanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\ai\\AiPanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/ai/AiPanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/ai/AiPanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\commands\\CommandRegistry.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\commands\\CommandRegistry.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/commands/CommandRegistry.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/commands/CommandRegistry.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\App.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\App.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/App.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/App.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\FileTypeRegistry.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\FileTypeRegistry.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/FileTypeRegistry.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/FileTypeRegistry.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\FileManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\FileManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/FileManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/FileManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\ThemeManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\ThemeManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/ThemeManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/ThemeManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\NetworkManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\NetworkManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/NetworkManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/NetworkManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\core\\NotificationManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\core\\NotificationManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/core/NotificationManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/core/NotificationManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\debug\\BuildManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\debug\\BuildManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/debug/BuildManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/debug/BuildManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\debug\\DebugManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\debug\\DebugManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/debug/DebugManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/debug/DebugManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\debug\\ProblemParser.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\debug\\ProblemParser.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/debug/ProblemParser.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/debug/ProblemParser.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\debug\\RunDebugView.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\debug\\RunDebugView.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/debug/RunDebugView.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/debug/RunDebugView.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\debug\\RunManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\debug\\RunManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/debug/RunManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/debug/RunManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\explorer\\ExplorerView.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\explorer\\ExplorerView.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/explorer/ExplorerView.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/explorer/ExplorerView.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\extensions\\ExtensionManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\extensions\\ExtensionManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/extensions/ExtensionManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/extensions/ExtensionManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\extensions\\ExtensionsView.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\extensions\\ExtensionsView.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/extensions/ExtensionsView.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/extensions/ExtensionsView.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\extensions\\PluginLoader.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\extensions\\PluginLoader.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/extensions/PluginLoader.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/extensions/PluginLoader.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\language\\AutoCompleter.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\language\\AutoCompleter.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/language/AutoCompleter.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/language/AutoCompleter.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\language\\CodeFormatter.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\language\\CodeFormatter.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/language/CodeFormatter.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/language/CodeFormatter.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\language\\LspClient.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\language\\LspClient.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/language/LspClient.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/language/LspClient.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\scm\\CommitDialog.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\scm\\CommitDialog.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/scm/CommitDialog.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/scm/CommitDialog.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\scm\\GitManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\scm\\GitManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/scm/GitManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/scm/GitManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\scm\\SourceControlView.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\scm\\SourceControlView.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/scm/SourceControlView.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/scm/SourceControlView.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\search\\ProjectSearchEngine.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\search\\ProjectSearchEngine.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/search/ProjectSearchEngine.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/search/ProjectSearchEngine.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\search\\SearchManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\search\\SearchManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/search/SearchManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/search/SearchManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\search\\SearchView.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\search\\SearchView.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/search/SearchView.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/search/SearchView.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\settings\\SettingsManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\settings\\SettingsManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/settings/SettingsManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/settings/SettingsManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\settings\\SettingsPanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\settings\\SettingsPanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/settings/SettingsPanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/settings/SettingsPanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\tabs\\EditorTab.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\tabs\\EditorTab.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/tabs/EditorTab.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/tabs/EditorTab.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\tabs\\TabManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\tabs\\TabManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/tabs/TabManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/tabs/TabManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\terminal\\TerminalPanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\terminal\\TerminalPanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/terminal/TerminalPanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/terminal/TerminalPanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\activitybar\\ActivityBar.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\activitybar\\ActivityBar.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/activitybar/ActivityBar.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/activitybar/ActivityBar.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\BreadcrumbBar.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\BreadcrumbBar.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/BreadcrumbBar.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/BreadcrumbBar.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\CodeEditor.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\CodeEditor.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/CodeEditor.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/CodeEditor.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\EditorArea.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\EditorArea.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/EditorArea.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/EditorArea.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\EditorGroup.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\EditorGroup.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/EditorGroup.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/EditorGroup.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\LineNumberArea.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\LineNumberArea.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/LineNumberArea.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/LineNumberArea.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\editor\\SyntaxHighlighter.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\editor\\SyntaxHighlighter.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/editor/SyntaxHighlighter.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/editor/SyntaxHighlighter.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\panels\\BottomPanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\panels\\BottomPanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/panels/BottomPanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/panels/BottomPanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\panels\\DebugConsolePanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\panels\\DebugConsolePanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/panels/DebugConsolePanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/panels/DebugConsolePanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\panels\\ProblemsPanel.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\panels\\ProblemsPanel.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/panels/ProblemsPanel.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/panels/ProblemsPanel.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\sidebar\\Sidebar.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\sidebar\\Sidebar.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/sidebar/Sidebar.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/sidebar/Sidebar.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\statusbar\\StatusBar.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\statusbar\\StatusBar.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/statusbar/StatusBar.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/statusbar/StatusBar.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workbench\\CommandPalette.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workbench\\CommandPalette.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workbench/CommandPalette.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workbench/CommandPalette.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workspace\\SessionManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workspace\\SessionManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workspace/SessionManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workspace/SessionManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workspace\\WorkspaceManager.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workspace\\WorkspaceManager.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workspace/WorkspaceManager.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workspace/WorkspaceManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\workspace\\WorkspaceState.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\workspace\\WorkspaceState.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/workspace/WorkspaceState.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/workspace/WorkspaceState.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\main.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\main.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/main.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/A/OneDrive/Documents/NC IDE/build",
+  "command": "C:\\MinGW\\ucrt64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/NC-IDE.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\NC-IDE.dir\\src\\MainWindow.cpp.obj -c \"C:\\Users\\A\\OneDrive\\Documents\\NC IDE\\src\\MainWindow.cpp\"",
+  "file": "C:/Users/A/OneDrive/Documents/NC IDE/src/MainWindow.cpp",
+  "output": "CMakeFiles/NC-IDE.dir/src/MainWindow.cpp.obj"
+}
+]

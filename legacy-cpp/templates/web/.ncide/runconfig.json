@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Run index.html",
+      "language": "html",
+      "buildCommand": "",
+      "runCommand": "explorer.exe \"${file}\"",
+      "workingDirectory": "${workspaceFolder}",
+      "env": {}
+    }
+  ],
+  "activeConfiguration": "Run index.html"
+}

@@ -1,0 +1,13 @@
+{
+  "configurations": [
+    {
+      "name": "Run Main.java",
+      "language": "java",
+      "buildCommand": "javac \"${file}\"",
+      "runCommand": "java -cp \"${fileDirname}\" \"${fileBasenameNoExtension}\"",
+      "workingDirectory": "${workspaceFolder}",
+      "env": {}
+    }
+  ],
+  "activeConfiguration": "Run Main.java"
+}
