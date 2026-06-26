@@ -6,6 +6,7 @@
     <a href="#tech-stack">Tech Stack</a> •
     <a href="#features--what-is-done">What's Done</a> •
     <a href="#roadmap--what-needs-to-be-done">Roadmap</a> •
+    <a href="docs/wiki/Home.md">Wiki / Docs</a> •
     <a href="#contributing">Contributing</a>
   </p>
 </div>
