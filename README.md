@@ -36,6 +36,45 @@ We have successfully migrated to the new WPF architecture and laid a solid found
 - **File System Operations:** Explorer context menus for creating files, creating folders, and safely deleting items.
 - **LSP Foundation:** Foundational hooks for Language Server Protocol to support autocomplete, hover tooltips, and real-time diagnostics.
 
+## Under the Hood (Snippets)
+
+Here is a glimpse of how NC IDE efficiently handles massive file systems using a lazy-loading **Dummy Node Strategy** in the `WorkspaceManager`:
+
+```csharp
+// Models/FileTreeNode.cs
+public class FileTreeNode : ObservableObject
+{
+    public string FullPath { get; set; }
+    public bool IsDirectory { get; set; }
+    public ObservableCollection<FileTreeNode> Children { get; } = new();
+
+    private bool _isExpanded;
+    public bool IsExpanded 
+    {
+        get => _isExpanded;
+        set 
+        {
+            if (SetProperty(ref _isExpanded, value) && value && IsDummy)
+            {
+                OnExpanded?.Invoke(this); // Triggers real folder load
+            }
+        }
+    }
+}
+```
+
+And how dynamic **Syntax Highlighting** is seamlessly applied via AvalonEdit:
+
+```csharp
+// UI/Views/MainWindow.xaml.cs
+private void ApplySyntaxHighlighting(string filePath)
+{
+    string extension = System.IO.Path.GetExtension(filePath);
+    var definition = HighlightingManager.Instance.GetDefinitionByExtension(extension);
+    CodeEditor.SyntaxHighlighting = definition;
+}
+```
+
 ## Roadmap & What Needs to be Done
 
 NC IDE is growing fast, and there's plenty of exciting work ahead! Here are the immediate priorities:
