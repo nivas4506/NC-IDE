@@ -25,6 +25,33 @@ Our goal is to build a native editor that feels as powerful and familiar as VS C
 - **Architecture Pattern:** MVVM (Model-View-ViewModel)
 - **Language Intelligence:** Language Server Protocol (LSP) Integration
 
+### Architecture Diagram
+
+```mermaid
+graph TD
+    %% Core UI
+    UI[MainWindow.xaml] -->|Data Binding| VM[MainViewModel.cs]
+    
+    %% Managers
+    VM --> WM[WorkspaceManager]
+    VM --> GM[GitManager]
+    VM --> TM[ThemeManager]
+    VM --> SM[SearchService]
+    
+    %% Models
+    WM --> FN[FileTreeNode]
+    WM --> ET[EditorTab]
+    
+    %% Editor
+    UI --> AE[AvalonEdit Component]
+    AE -->|Loads| SH[Syntax Highlighting Definition]
+    
+    %% Styling
+    style UI fill:#007acc,stroke:#fff,stroke-width:2px,color:#fff
+    style VM fill:#28a745,stroke:#fff,stroke-width:2px,color:#fff
+    style WM fill:#6f42c1,stroke:#fff,stroke-width:2px,color:#fff
+```
+
 ## Features & What is Done
 
 We have successfully migrated to the new WPF architecture and laid a solid foundation for the IDE shell:
